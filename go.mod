@@ -1,11 +1,11 @@
-module atom
+module atom/http
 
 go 1.19
 
 require (
 	github.com/brianvoe/gofakeit/v6 v6.20.1
 	github.com/gin-gonic/gin v1.8.2
-	github.com/rogeecn/atom v0.0.0-20230420041142-c35644377a1f
+	github.com/rogeecn/atom v0.0.0-20230428071028-ebcd25f776f0
 	github.com/rogeecn/gen v1.0.11
 	github.com/spf13/cobra v1.5.0
 	github.com/spf13/viper v1.15.0
@@ -45,6 +45,7 @@ require (
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/microsoft/go-mssqldb v0.21.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
