@@ -5,22 +5,23 @@ import (
 
 	"atom/http/database/migrations"
 	"atom/http/database/seeders"
-	"atom/http/modules/system"
+	"atom/http/modules/greet"
 
 	"github.com/rogeecn/atom"
-	"github.com/rogeecn/atom/providers/database/sqlite"
 	"github.com/rogeecn/atom/services"
 	"github.com/spf13/cobra"
 )
 
 func main() {
-	providers := atom.DefaultHTTP(sqlite.DefaultProvider()).
-		With(system.Providers())
+	// providers := atom.DefaultHTTP(sqlite.DefaultProvider()).
+	providers := atom.DefaultGRPC().
+		With(greet.Providers())
 
 	opts := []atom.Option{
 		atom.Name("http"),
 		atom.RunE(func(cmd *cobra.Command, args []string) error {
-			return services.ServeHttp()
+			// return services.ServeHttp()
+			return services.ServeGrpc()
 		}),
 		atom.Seeders(seeders.Seeders...),
 		atom.Migrations(migrations.Migrations...),

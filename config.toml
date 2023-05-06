@@ -1,3 +1,7 @@
+[Grpc]
+Port = 9800
+
+
 [Http]
 Static = "./dist"
 Port = 9800
