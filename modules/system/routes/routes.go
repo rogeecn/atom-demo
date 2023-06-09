@@ -7,6 +7,7 @@ import (
 	"github.com/rogeecn/atom"
 	"github.com/rogeecn/atom/container"
 	"github.com/rogeecn/atom/providers/http"
+	"github.com/rogeecn/atom/providers/swagger"
 	"github.com/rogeecn/atom/utils/opt"
 	"github.com/rogeecn/gen"
 )
@@ -20,7 +21,7 @@ type Route struct {
 	engine  *gin.Engine
 }
 
-func NewRoute(captcha *controller.CaptchaController, svc http.Service) http.Route {
+func NewRoute(captcha *controller.CaptchaController, _ *swagger.Swagger, svc http.Service) http.Route {
 	engine := svc.GetEngine().(*gin.Engine)
 	return &Route{captcha: captcha, engine: engine}
 }

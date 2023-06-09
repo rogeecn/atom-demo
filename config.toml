@@ -26,3 +26,11 @@ AllowCredentials = true
 
 [SQLite]
 File = "sqlite.db"
+
+
+[Swagger]
+BaseRoute = "gg"
+Title = "Swagger Example API"
+Description = "This is a sample server Petstore server."
+BasePath= "/v2"
+Version = "1.0.0"
