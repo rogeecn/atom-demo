@@ -7,25 +7,19 @@ import (
 	"github.com/rogeecn/atom"
 	"github.com/rogeecn/atom/container"
 	"github.com/rogeecn/atom/providers/http"
-	"github.com/rogeecn/atom/providers/swagger"
 	"github.com/rogeecn/atom/utils/opt"
-	"github.com/rogeecn/gen"
 )
 
 func Provide(opts ...opt.Option) error {
-	return container.Container.Provide(NewRoute, atom.GroupRoutes)
-}
+	newRoutes := func(
+		captcha *controller.CaptchaController,
+		svc http.Service,
+	) http.Route {
+		engine := svc.GetEngine().(*gin.Engine)
 
-type Route struct {
-	captcha *controller.CaptchaController
-	engine  *gin.Engine
-}
+		routeCaptchaController(engine.Group("/"), captcha)
 
-func NewRoute(captcha *controller.CaptchaController, _ *swagger.Swagger, svc http.Service) http.Route {
-	engine := svc.GetEngine().(*gin.Engine)
-	return &Route{captcha: captcha, engine: engine}
-}
-
-func (r *Route) Register() {
-	r.engine.GET("/", gen.DataFunc(r.captcha.Show))
+		return nil
+	}
+	return container.Container.Provide(newRoutes, atom.GroupRoutes)
 }
