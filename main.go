@@ -1,3 +1,5 @@
+//go:generate atomctl gen routes
+//go:generate swag init
 package main
 
 import (
