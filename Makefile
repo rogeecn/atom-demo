@@ -1,7 +1,7 @@
 buildAt=`date +%Y/%m/%d-%H:%M:%S`
 gitHash=`git rev-parse HEAD`
 version=`git rev-parse --abbrev-ref HEAD | grep -v HEAD || git describe --exact-match HEAD || git rev-parse HEAD`  ## todo: use current release git tag
-flags="-X 'atom/utils.Version=${version}' -X 'atom/utils.BuildAt=${buildAt}' -X 'atom/utils.GitHash=${gitHash}'"
+flags="-X 'atom/http/utils.Version=${version}' -X 'atom/http/utils.BuildAt=${buildAt}' -X 'atom/http/utils.GitHash=${gitHash}'"
 release_flags="-w -s ${flags}"
 
 GOPATH:=$(shell go env GOPATH)
@@ -26,7 +26,7 @@ run: generate
 	@go run .
 
 .PHONY: release
-release:
+release: generate
 	@go build -ldflags=${flags} -o bin/release/atom
 	@cp config.toml bin/release/
 
