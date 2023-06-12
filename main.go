@@ -9,14 +9,14 @@ import (
 	"log"
 
 	"github.com/rogeecn/atom"
-	"github.com/rogeecn/atom/providers/database/sqlite"
-	"github.com/rogeecn/atom/providers/swagger"
-	"github.com/rogeecn/atom/services"
+	"github.com/rogeecn/atom-addons/providers/database/sqlite"
+	"github.com/rogeecn/atom-addons/providers/swagger"
+	"github.com/rogeecn/atom-addons/services/http"
 	"github.com/spf13/cobra"
 )
 
 func main() {
-	providers := atom.DefaultHTTP(
+	providers := http.Default(
 		sqlite.DefaultProvider(),
 		swagger.DefaultProvider(),
 	).With(system.Providers())
@@ -24,7 +24,7 @@ func main() {
 
 	opts := []atom.Option{
 		atom.RunE(func(cmd *cobra.Command, args []string) error {
-			return services.ServeHttp()
+			return http.Serve()
 			// return services.ServeGrpc()
 		}),
 		atom.Seeders(seeders.Seeders...),

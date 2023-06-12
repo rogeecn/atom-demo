@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/rogeecn/atom/providers/captcha"
+	"github.com/rogeecn/atom-addons/providers/captcha"
 	"github.com/spf13/viper"
 )
 
