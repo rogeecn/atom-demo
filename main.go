@@ -12,6 +12,7 @@ import (
 
 	"github.com/rogeecn/atom"
 	"github.com/rogeecn/atom-addons/providers/database/sqlite"
+	"github.com/rogeecn/atom-addons/providers/faker"
 	"github.com/rogeecn/atom-addons/providers/swagger"
 	"github.com/rogeecn/atom-addons/services/http"
 	"github.com/spf13/cobra"
@@ -21,6 +22,7 @@ func main() {
 	providers := http.Default(
 		sqlite.DefaultProvider(),
 		swagger.DefaultProvider(),
+		faker.DefaultProvider(),
 	).With(
 		boot.Providers(),
 		system.Providers(),
