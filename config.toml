@@ -29,8 +29,8 @@ File = "sqlite.db"
 
 
 [Swagger]
-BaseRoute = "Gaga"
-Title = "Swagger Example API"
+BaseRoute = "docs"
+Title = "Swagger"
 Description = "This is a sample server Petstore server."
-BasePath= "/v2"
+BasePath= "/"
 Version = "1.0.0"
