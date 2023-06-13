@@ -17,6 +17,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+//	@title			Api
+//	@version		1.0
+//	@description	Api documents
+//	@BasePath		/
 func main() {
 	providers := http.Default(
 		sqlite.DefaultProvider(),

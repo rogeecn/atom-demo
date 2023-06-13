@@ -29,7 +29,7 @@ File = "sqlite.db"
 
 
 [Swagger]
-BaseRoute = "gg"
+BaseRoute = "Gaga"
 Title = "Swagger Example API"
 Description = "This is a sample server Petstore server."
 BasePath= "/v2"

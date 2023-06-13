@@ -6,5 +6,5 @@ import (
 )
 
 func Provide(opts ...opt.Option) error {
-	return container.Container.Provide(NewCaptchaController)
+	return container.Container.Provide(NewUserController)
 }

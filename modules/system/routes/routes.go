@@ -12,12 +12,12 @@ import (
 
 func Provide(opts ...opt.Option) error {
 	newRoutes := func(
-		captcha *controller.CaptchaController,
+		user *controller.UserController,
 		svc http.Service,
 	) http.Route {
 		engine := svc.GetEngine().(*gin.Engine)
 
-		routeCaptchaController(engine.Group("/"), captcha)
+		routeUserController(engine.Group("/user"), user)
 
 		return nil
 	}

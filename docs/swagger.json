@@ -1,35 +1,16 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "Api documents",
+        "title": "Api",
+        "contact": {},
+        "version": "1.0"
     },
+    "basePath": "/",
     "paths": {
-        "/example/:id/:action": {
-            "post": {
-                "description": "do ping",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "example"
-                ],
-                "summary": "ping example",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/example/helloworld": {
+        "/user/get-name/{id}": {
             "get": {
-                "description": "do ping",
+                "description": "get user name by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -37,9 +18,18 @@
                     "application/json"
                 ],
                 "tags": [
-                    "example"
+                    "user"
                 ],
-                "summary": "ping example",
+                "summary": "get user name by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "UserID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
