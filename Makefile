@@ -6,27 +6,32 @@ release_flags="-w -s ${flags}"
 
 GOPATH:=$(shell go env GOPATH)
 
+.PHONY: doc
+doc:
+	@swag fmt
+	@swag init -ot json
+
 .PHONY: generate
 generate:
 	@go generate ./...
 
 .PHONY: tidy
-tidy: generate
+tidy: doc generate
 	@go mod tidy
 
 .PHONY: dist
-dist: generate
+dist:doc generate
 	@echo "building..."
 	@go build -ldflags=${flags} -o bin/debug/atom
 	@cp config.toml bin/debug/
 
 .PHONY: run
-run: generate
+run: doc generate
 	@echo "building..."
 	@go run .
 
 .PHONY: release
-release: generate
+release: doc generate
 	@go build -ldflags=${flags} -o bin/release/atom
 	@cp config.toml bin/release/
 
