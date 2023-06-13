@@ -16,8 +16,11 @@ func NewUserController() *UserController {
 // GetName get user name
 //
 //	@Summary		get user name by id
-//	@Description	get user name by id
-//	@Tags			user
+//	@Description	gget user name by idget user name by idget user name by idget user name by idet user name by id
+//	@Description	gget user name by idget user name by idget user name by idget user name by idet user name by id
+//	@Description	gget user name by idget user name by idget user name by idget user name by idet user name by id
+//	@Description	gget user name by idget user name by idget user name by idget user name by idet user name by id
+//	@Tags			用户管理
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	path		int	true	"UserID"

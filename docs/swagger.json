@@ -1,16 +1,12 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Api documents",
-        "title": "Api",
-        "contact": {},
-        "version": "1.0"
+        "contact": {}
     },
-    "basePath": "/",
     "paths": {
         "/user/get-name/{id}": {
             "get": {
-                "description": "get user name by id",
+                "description": "gget user name by idget user name by idget user name by idget user name by idet user name by id\ngget user name by idget user name by idget user name by idget user name by idet user name by id\ngget user name by idget user name by idget user name by idget user name by idet user name by id\ngget user name by idget user name by idget user name by idget user name by idet user name by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -18,7 +14,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "user"
+                    "用户管理"
                 ],
                 "summary": "get user name by id",
                 "parameters": [
