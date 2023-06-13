@@ -1,7 +1,7 @@
-package greet
+package boot
 
 import (
-	"atom/http/modules/greet/controller"
+	"atom/http/modules/boot/controller"
 
 	"github.com/rogeecn/atom/container"
 )

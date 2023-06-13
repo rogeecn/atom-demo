@@ -7,24 +7,25 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/rogeecn/atom-addons/providers/captcha"
 	"github.com/spf13/viper"
+	"gorm.io/gorm"
 )
 
 type CaptchaController struct {
 }
 
-func NewCaptchaController() *CaptchaController {
+func NewCaptchaController(_ *gorm.DB) *CaptchaController {
 	return &CaptchaController{}
 }
 
 // PingExample godoc
-// @Summary ping example
-// @Schemes
-// @Description do ping
-// @Tags example
-// @Accept json
-// @Produce json
-// @Success 200 {string} Helloworld
-// @Router /example/helloworld [get]
+//	@Summary	ping example
+//	@Schemes
+//	@Description	do ping
+//	@Tags			example
+//	@Accept			json
+//	@Produce		json
+//	@Success		200	{string}	Helloworld
+//	@Router			/example/helloworld [get]
 func (c *CaptchaController) Show(ctx *gin.Context) (*captcha.CaptchaResponse, error) {
 	return &captcha.CaptchaResponse{
 		CaptchaId:     "123",
@@ -35,14 +36,14 @@ func (c *CaptchaController) Show(ctx *gin.Context) (*captcha.CaptchaResponse, er
 }
 
 // PingExample godoc
-// @Summary ping example
-// @Schemes
-// @Description do ping
-// @Tags example
-// @Accept json
-// @Produce json
-// @Success 200 {string} Helloworld
-// @Router /example/:id/:action [post]
+//	@Summary	ping example
+//	@Schemes
+//	@Description	do ping
+//	@Tags			example
+//	@Accept			json
+//	@Produce		json
+//	@Success		200	{string}	Helloworld
+//	@Router			/example/:id/:action [post]
 func (c *CaptchaController) Go(ctx *gin.Context, id uint, action string, body *dto.UserInfoBody) (*captcha.CaptchaResponse, error) {
 	return &captcha.CaptchaResponse{
 		CaptchaId:     fmt.Sprintf("id: %d", id),

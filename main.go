@@ -5,6 +5,7 @@ package main
 import (
 	"atom/http/database/migrations"
 	"atom/http/database/seeders"
+	"atom/http/modules/boot"
 	"atom/http/modules/system"
 	"log"
 
@@ -19,7 +20,10 @@ func main() {
 	providers := http.Default(
 		sqlite.DefaultProvider(),
 		swagger.DefaultProvider(),
-	).With(system.Providers())
+	).With(
+		boot.Providers(),
+		system.Providers(),
+	)
 	// providers := atom.DefaultGRPC().With(greet.Providers())
 
 	opts := []atom.Option{

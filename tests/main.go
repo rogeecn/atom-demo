@@ -27,14 +27,14 @@ type UserController struct {
 }
 
 // PingExample godoc
-// @Summary ping example
-// @Schemes
-// @Description do ping
-// @Tags example
-// @Accept json
-// @Produce json
-// @Success 200 {string} Helloworld
-// @Router /example/helloworld [get]
+//	@Summary	ping example
+//	@Schemes
+//	@Description	do ping
+//	@Tags			example
+//	@Accept			json
+//	@Produce		json
+//	@Success		200	{string}	Helloworld
+//	@Router			/example/helloworld [get]
 func (c *UserController) Action(ctx context.Context, user string, age uint) error {
 	return nil
 }
