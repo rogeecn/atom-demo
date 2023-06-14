@@ -4,12 +4,13 @@
 package main
 
 import (
+	"log"
+
 	"atom/http/database/migrations"
 	"atom/http/database/query"
 	"atom/http/database/seeders"
 	"atom/http/modules/boot"
 	"atom/http/modules/system"
-	"log"
 
 	"github.com/rogeecn/atom"
 	"github.com/rogeecn/atom-addons/providers/database/sqlite"

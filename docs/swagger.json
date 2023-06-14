@@ -6,7 +6,7 @@
     "paths": {
         "/users": {
             "get": {
-                "description": "list user by query filter",
+                "description": "list by query filter",
                 "consumes": [
                     "application/json"
                 ],
@@ -14,9 +14,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用户管理"
+                    "TODO_ADD_TAGNAME"
                 ],
-                "summary": "list user by query filter",
+                "summary": "list by query filter",
                 "parameters": [
                     {
                         "type": "integer",
@@ -36,6 +36,11 @@
                     {
                         "type": "string",
                         "name": "birthday",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "created_at",
                         "in": "query"
                     },
                     {
@@ -60,6 +65,11 @@
                     },
                     {
                         "type": "string",
+                        "name": "updated_at",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "name": "username",
                         "in": "query"
                     }
@@ -74,7 +84,7 @@
                 }
             },
             "post": {
-                "description": "create new user",
+                "description": "create new item",
                 "consumes": [
                     "application/json"
                 ],
@@ -82,9 +92,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用户管理"
+                    "TODO_ADD_TAGNAME"
                 ],
-                "summary": "create new user",
+                "summary": "create new item",
                 "parameters": [
                     {
                         "description": "UserForm",
@@ -92,7 +102,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.UserForm"
+                            "$ref": "#/definitions/atom_http_modules_test_dto.UserForm"
                         }
                     }
                 ],
@@ -108,7 +118,7 @@
         },
         "/users/{id}": {
             "get": {
-                "description": "get user info by id",
+                "description": "get info by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -116,9 +126,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用户管理"
+                    "TODO_ADD_TAGNAME"
                 ],
-                "summary": "get user by id",
+                "summary": "get by id",
                 "parameters": [
                     {
                         "type": "integer",
@@ -132,13 +142,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.UserItem"
+                            "$ref": "#/definitions/atom_http_modules_test_dto.UserItem"
                         }
                     }
                 }
             },
             "put": {
-                "description": "update user by id",
+                "description": "update by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -146,9 +156,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用户管理"
+                    "TODO_ADD_TAGNAME"
                 ],
-                "summary": "update user by id",
+                "summary": "update by id",
                 "parameters": [
                     {
                         "type": "integer",
@@ -163,7 +173,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.UserForm"
+                            "$ref": "#/definitions/atom_http_modules_test_dto.UserForm"
                         }
                     }
                 ],
@@ -183,7 +193,7 @@
                 }
             },
             "delete": {
-                "description": "delete user by id",
+                "description": "delete by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -191,9 +201,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用户管理"
+                    "TODO_ADD_TAGNAME"
                 ],
-                "summary": "delete user by id",
+                "summary": "delete by id",
                 "parameters": [
                     {
                         "type": "integer",
@@ -221,6 +231,122 @@
         }
     },
     "definitions": {
+        "atom_http_modules_system_dto.UserForm": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "atom_http_modules_system_dto.UserItem": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "atom_http_modules_test_dto.UserForm": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "atom_http_modules_test_dto.UserItem": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
         "common.PageDataResponse": {
             "type": "object",
             "properties": {
@@ -233,58 +359,6 @@
                 },
                 "total": {
                     "type": "integer"
-                }
-            }
-        },
-        "dto.UserForm": {
-            "type": "object",
-            "properties": {
-                "age": {
-                    "type": "integer"
-                },
-                "birthday": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "sex": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
-                }
-            }
-        },
-        "dto.UserItem": {
-            "type": "object",
-            "properties": {
-                "age": {
-                    "type": "integer"
-                },
-                "birthday": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "sex": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
                 }
             }
         }
