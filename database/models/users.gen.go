@@ -6,17 +6,24 @@ package models
 
 import (
 	"time"
+
+	"gorm.io/gorm"
 )
 
 const TableNameUser = "users"
 
 // User mapped from table <users>
 type User struct {
-	Username string    `gorm:"column:username;type:text;not null" json:"username"`
-	Age      int32     `gorm:"column:age;type:integer;not null" json:"age"`
-	Sex      string    `gorm:"column:sex;type:text;not null" json:"sex"`
-	Birthday time.Time `gorm:"column:birthday;type:datetime;not null" json:"birthday"`
-	Status   string    `gorm:"column:status;type:text;not null" json:"status"`
+	ID        int32          `gorm:"column:id;type:integer;primaryKey" json:"id"`
+	CreatedAt time.Time      `gorm:"column:created_at;type:datetime;not null" json:"created_at"`
+	UpdatedAt time.Time      `gorm:"column:updated_at;type:datetime;not null" json:"updated_at"`
+	DeletedAt gorm.DeletedAt `gorm:"column:deleted_at;type:datetime;not null" json:"deleted_at"`
+	Username  string         `gorm:"column:username;type:text;not null" json:"username"`
+	Age       int32          `gorm:"column:age;type:integer;not null" json:"age"`
+	Sex       string         `gorm:"column:sex;type:text;not null" json:"sex"`
+	Birthday  time.Time      `gorm:"column:birthday;type:datetime;not null" json:"birthday"`
+	Status    string         `gorm:"column:status;type:text;not null" json:"status"`
+	State     string         `gorm:"column:state;type:text;not null" json:"state"`
 }
 
 // TableName User's table name

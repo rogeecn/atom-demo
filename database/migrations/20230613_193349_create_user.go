@@ -24,8 +24,7 @@ func (m *Migration20230613_193349CreateUser) ID() string {
 }
 
 func (m *Migration20230613_193349CreateUser) Up(tx *gorm.DB) error {
-	table := m.table()
-	return tx.AutoMigrate(&table)
+	return tx.AutoMigrate(m.table())
 }
 
 func (m *Migration20230613_193349CreateUser) Down(tx *gorm.DB) error {
@@ -34,6 +33,7 @@ func (m *Migration20230613_193349CreateUser) Down(tx *gorm.DB) error {
 
 func (m *Migration20230613_193349CreateUser) table() interface{} {
 	type User struct {
+		gorm.Model
 		Username string
 		Age      uint
 		Sex      string
@@ -41,5 +41,5 @@ func (m *Migration20230613_193349CreateUser) table() interface{} {
 		Status   string
 	}
 
-	return User{}
+	return &User{}
 }

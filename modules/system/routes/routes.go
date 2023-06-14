@@ -17,7 +17,7 @@ func Provide(opts ...opt.Option) error {
 	) http.Route {
 		engine := svc.GetEngine().(*gin.Engine)
 
-		routeUserController(engine.Group("/user"), user)
+		routeUserController(engine.Group("/users"), user)
 
 		return nil
 	}
