@@ -4,9 +4,10 @@ package routes
 
 import (
 	 "strings"
+
 	"atom/http/modules/system/controller"
-	"atom/http/modules/system/dto"
 	"atom/http/common"
+	"atom/http/modules/system/dto"
 
 	. "github.com/rogeecn/gen"
 	"github.com/gin-gonic/gin"
