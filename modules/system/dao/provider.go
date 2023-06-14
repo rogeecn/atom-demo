@@ -1,4 +1,4 @@
-package controller
+package dao
 
 import (
 	"github.com/rogeecn/atom/container"
@@ -6,6 +6,6 @@ import (
 )
 
 func Provide(opts ...opt.Option) error {
-	_ = container.Container.Provide(NewUserController)
+	_ = container.Container.Provide(NewUserDao)
 	return nil
 }

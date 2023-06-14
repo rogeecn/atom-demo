@@ -5,6 +5,7 @@ package main
 
 import (
 	"atom/http/database/migrations"
+	"atom/http/database/query"
 	"atom/http/database/seeders"
 	"atom/http/modules/boot"
 	"atom/http/modules/system"
@@ -23,6 +24,7 @@ func main() {
 		sqlite.DefaultProvider(),
 		swagger.DefaultProvider(),
 		faker.DefaultProvider(),
+		query.DefaultProvider(),
 	).With(
 		boot.Providers(),
 		system.Providers(),

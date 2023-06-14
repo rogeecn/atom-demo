@@ -33,9 +33,19 @@ func (s *UserSeeder) Run(faker *gofakeit.Faker, db *gorm.DB) {
 func (s *UserSeeder) Generate(faker *gofakeit.Faker, idx int) models.User {
 	return models.User{
 		Username: faker.Name(),
-		Age:      faker.Int32(),
-		Sex:      faker.RandomString([]string{"male", "female"}),
+		Age:      int32(faker.UintRange(1, 100)),
+		Sex: faker.RandomString([]string{
+			"male",
+			"female",
+		}),
 		Birthday: faker.Date(),
-		Status:   faker.RandomString([]string{"enabled", "disabled"}),
+		Status: faker.RandomString([]string{
+			"enabled",
+			"disabled",
+		}),
+		State: faker.RandomString([]string{
+			"ok",
+			"bad",
+		}),
 	}
 }

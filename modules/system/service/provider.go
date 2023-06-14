@@ -6,5 +6,7 @@ import (
 )
 
 func Provide(opts ...opt.Option) error {
-	return container.Container.Provide(NewSystemService)
+	_ = container.Container.Provide(NewSystemService)
+	_ = container.Container.Provide(NewUserService)
+	return nil
 }

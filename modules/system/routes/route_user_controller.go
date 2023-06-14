@@ -6,6 +6,7 @@ import (
 	 "strings"
 	"atom/http/modules/system/controller"
 	"atom/http/modules/system/dto"
+	"atom/http/common"
 
 	. "github.com/rogeecn/gen"
 	"github.com/gin-gonic/gin"
@@ -13,9 +14,9 @@ import (
 
 func routeUserController(engine *gin.RouterGroup, controller *controller.UserController) {
 	basePath := engine.BasePath()
-	engine.GET(strings.TrimPrefix("/users/:id", basePath), DataFunc1(controller.Show, Integer[uint]("id", PathParamError)))
-	engine.GET(strings.TrimPrefix("/users", basePath), DataFunc1(controller.List, Query(&dto.UserListQueryFilter{}, QueryParamError)))
-	engine.POST(strings.TrimPrefix("/users", basePath), DataFunc1(controller.Create, Body(&dto.UserForm{}, BodyParamError)))
-	engine.PUT(strings.TrimPrefix("/users/:id", basePath), Func2(controller.Update, Integer[uint]("id", PathParamError), Body(&dto.UserForm{}, BodyParamError)))
-	engine.DELETE(strings.TrimPrefix("/users/:id", basePath), Func1(controller.Delete, Integer[uint]("id", PathParamError)))
+	engine.GET(strings.TrimPrefix("/users/:id", basePath), DataFunc1(controller.Show, Integer[int32]("id", PathParamError)))
+	engine.GET(strings.TrimPrefix("/users", basePath), DataFunc2(controller.List, Query(&common.PageQueryFilter{}, QueryParamError), Query(&dto.UserListQueryFilter{}, QueryParamError)))
+	engine.POST(strings.TrimPrefix("/users", basePath), Func1(controller.Create, Body(&dto.UserForm{}, BodyParamError)))
+	engine.PUT(strings.TrimPrefix("/users/:id", basePath), Func2(controller.Update, Integer[int32]("id", PathParamError), Body(&dto.UserForm{}, BodyParamError)))
+	engine.DELETE(strings.TrimPrefix("/users/:id", basePath), Func1(controller.Delete, Integer[int32]("id", PathParamError)))
 }

@@ -1,16 +1,23 @@
 package controller
 
 import (
+	"atom/http/common"
 	"atom/http/modules/system/dto"
+	"atom/http/modules/system/service"
 
 	"github.com/gin-gonic/gin"
 )
 
 type UserController struct {
+	userSvc *service.UserService
 }
 
-func NewUserController() *UserController {
-	return &UserController{}
+func NewUserController(
+	userSvc *service.UserService,
+) *UserController {
+	return &UserController{
+		userSvc: userSvc,
+	}
 }
 
 // GetName get user name
@@ -23,10 +30,8 @@ func NewUserController() *UserController {
 //	@Param			id	path		int	true	"UserID"
 //	@Success		200	{object}	dto.UserItem
 //	@Router			/users/{id} [get]
-func (c *UserController) Show(ctx *gin.Context, id uint) (*dto.UserItem, error) {
-	return &dto.UserItem{
-		Name: "Rogee",
-	}, nil
+func (c *UserController) Show(ctx *gin.Context, id int32) (*dto.UserItem, error) {
+	return c.userSvc.GetByID(ctx, id)
 }
 
 // List list user by query filter
@@ -36,17 +41,20 @@ func (c *UserController) Show(ctx *gin.Context, id uint) (*dto.UserItem, error) 
 //	@Tags			用户管理
 //	@Accept			json
 //	@Produce		json
-//	@Param			queryFilter	query	dto.UserListQueryFilter	true	"QueryFilter"
-//	@Success		200			{array}	dto.UserItem
+//	@Param			pageFilter	query		common.PageQueryFilter	true	"QueryFilter"
+//	@Param			queryFilter	query		dto.UserListQueryFilter	true	"QueryFilter"
+//	@Success		200			{object}	common.PageDataResponse
 //	@Router			/users [get]
-func (c *UserController) List(ctx *gin.Context, queryFilter *dto.UserListQueryFilter) ([]*dto.UserItem, error) {
-	return []*dto.UserItem{
-		{
-			Name: "Rogee",
-		},
-		{
-			Name: "Rogee",
-		},
+func (c *UserController) List(ctx *gin.Context, pageFilter *common.PageQueryFilter, queryFilter *dto.UserListQueryFilter) (*common.PageDataResponse, error) {
+	items, total, err := c.userSvc.PageByQueryFilter(ctx, pageFilter, queryFilter)
+	if err != nil {
+		return nil, err
+	}
+
+	return &common.PageDataResponse{
+		PageQueryFilter: *pageFilter,
+		Total:           total,
+		Items:           items,
 	}, nil
 }
 
@@ -57,11 +65,11 @@ func (c *UserController) List(ctx *gin.Context, queryFilter *dto.UserListQueryFi
 //	@Tags			用户管理
 //	@Accept			json
 //	@Produce		json
-//	@Param			body	body	dto.UserForm	true	"UserForm"
-//	@Success		200		{int}	UserID
+//	@Param			body	body		dto.UserForm	true	"UserForm"
+//	@Success		200		{string}	UserID
 //	@Router			/users [post]
-func (c *UserController) Create(ctx *gin.Context, body *dto.UserForm) (int, error) {
-	return 12, nil
+func (c *UserController) Create(ctx *gin.Context, body *dto.UserForm) error {
+	return c.userSvc.Create(ctx, body)
 }
 
 // Update update user by id
@@ -76,8 +84,8 @@ func (c *UserController) Create(ctx *gin.Context, body *dto.UserForm) (int, erro
 //	@Success		200		{string}	UserID
 //	@Failure		500		{string}	UserID
 //	@Router			/users/{id} [put]
-func (c *UserController) Update(ctx *gin.Context, id uint, body *dto.UserForm) error {
-	return nil
+func (c *UserController) Update(ctx *gin.Context, id int32, body *dto.UserForm) error {
+	return c.userSvc.Update(ctx, id, body)
 }
 
 // Delete delete user by id
@@ -91,6 +99,6 @@ func (c *UserController) Update(ctx *gin.Context, id uint, body *dto.UserForm) e
 //	@Success		200	{string}	UserID
 //	@Failure		500	{string}	UserID
 //	@Router			/users/{id} [delete]
-func (c *UserController) Delete(ctx *gin.Context, id uint) error {
-	return nil
+func (c *UserController) Delete(ctx *gin.Context, id int32) error {
+	return c.userSvc.Delete(ctx, id)
 }

@@ -6,6 +6,7 @@ require (
 	github.com/brianvoe/gofakeit/v6 v6.22.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/iancoleman/strcase v0.2.0
+	github.com/jinzhu/copier v0.3.5
 	github.com/pkg/errors v0.9.1
 	github.com/rogeecn/atom v0.0.0-20230609065829-aee21ec77209
 	github.com/rogeecn/atom-addons/providers/database/sqlite v0.0.0-20230612020945-fd8951c32ca5

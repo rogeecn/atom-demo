@@ -17,14 +17,58 @@
                     "用户管理"
                 ],
                 "summary": "list user by query filter",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "age",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "birthday",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "sex",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "state",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "username",
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/dto.UserItem"
-                            }
+                            "$ref": "#/definitions/common.PageDataResponse"
                         }
                     }
                 }
@@ -56,7 +100,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "int"
+                            "type": "string"
                         }
                     }
                 }
@@ -177,10 +221,43 @@
         }
     },
     "definitions": {
+        "common.PageDataResponse": {
+            "type": "object",
+            "properties": {
+                "items": {},
+                "limit": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
         "dto.UserForm": {
             "type": "object",
             "properties": {
-                "name": {
+                "age": {
+                    "type": "integer"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "username": {
                     "type": "string"
                 }
             }
@@ -188,7 +265,25 @@
         "dto.UserItem": {
             "type": "object",
             "properties": {
-                "name": {
+                "age": {
+                    "type": "integer"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "username": {
                     "type": "string"
                 }
             }
