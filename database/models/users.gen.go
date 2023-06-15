@@ -14,7 +14,7 @@ const TableNameUser = "users"
 
 // User mapped from table <users>
 type User struct {
-	ID        int32          `gorm:"column:id;type:integer;primaryKey" json:"id"`
+	ID        int32          `gorm:"column:id;type:integer;primaryKey;comment:'UserIDShow'" json:"id"`
 	CreatedAt time.Time      `gorm:"column:created_at;type:datetime;not null" json:"created_at"`
 	UpdatedAt time.Time      `gorm:"column:updated_at;type:datetime;not null" json:"updated_at"`
 	DeletedAt gorm.DeletedAt `gorm:"column:deleted_at;type:datetime;not null" json:"deleted_at"`

@@ -1,8 +1,8 @@
 package common
 
 type SortQueryFilter struct {
-	Asc  string `json:"asc"`
-	Desc string `json:"desc"`
+	Asc  []string `json:"asc"`
+	Desc []string `json:"desc"`
 }
 
 type PageDataResponse struct {

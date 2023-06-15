@@ -13,10 +13,10 @@ type UserListQueryFilter struct {
 }
 
 type UserItem struct {
-	ID       *int32     `json:"id,omitempty""`
-	Username *string    `json:"username,omitempty"`
-	Age      *int32     `json:"age,omitempty"`
-	Sex      *string    `json:"sex,omitempty"`
+	ID       *int32     `json:"id,omitempty"`       // UserID
+	Username *string    `json:"username,omitempty"` // UserName
+	Age      *int32     `json:"age,omitempty"`      // UserAge
+	Sex      *string    `json:"sex,omitempty"`      // UserSex
 	Birthday *time.Time `json:"birthday,omitempty"`
 	Status   *string    `json:"status,omitempty"`
 	State    *string    `json:"state,omitempty"`

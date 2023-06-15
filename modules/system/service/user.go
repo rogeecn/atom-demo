@@ -36,8 +36,13 @@ func (svc *UserService) GetByID(ctx context.Context, id int32) (*dto.UserItem, e
 	return resp, nil
 }
 
-func (svc *UserService) PageByQueryFilter(ctx context.Context, pageFilter *common.PageQueryFilter, queryFilter *dto.UserListQueryFilter) ([]*dto.UserItem, int64, error) {
-	userModels, total, err := svc.userDao.PageByQueryFilter(ctx, pageFilter.Format(), queryFilter)
+func (svc *UserService) PageByQueryFilter(
+	ctx context.Context,
+	queryFilter *dto.UserListQueryFilter,
+	pageFilter *common.PageQueryFilter,
+	sortFilter *common.SortQueryFilter,
+) ([]*dto.UserItem, int64, error) {
+	userModels, total, err := svc.userDao.PageByQueryFilter(ctx, queryFilter, pageFilter.Format(), sortFilter)
 	if err != nil {
 		return nil, 0, err
 	}

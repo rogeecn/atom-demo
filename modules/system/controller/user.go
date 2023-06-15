@@ -41,12 +41,18 @@ func (c *UserController) Show(ctx *gin.Context, id int32) (*dto.UserItem, error)
 //	@Tags			用户管理
 //	@Accept			json
 //	@Produce		json
-//	@Param			pageFilter	query		common.PageQueryFilter	true	"QueryFilter"
-//	@Param			queryFilter	query		dto.UserListQueryFilter	true	"QueryFilter"
+//	@Param			queryFilter	query		dto.UserListQueryFilter	true	"UserListQueryFilter"
+//	@Param			pageFilter	query		common.PageQueryFilter	true	"PageQueryFilter"
+//	@Param			sortFilter	query		common.SortQueryFilter	true	"SortQueryFilter"
 //	@Success		200			{object}	common.PageDataResponse
 //	@Router			/users [get]
-func (c *UserController) List(ctx *gin.Context, pageFilter *common.PageQueryFilter, queryFilter *dto.UserListQueryFilter) (*common.PageDataResponse, error) {
-	items, total, err := c.userSvc.PageByQueryFilter(ctx, pageFilter, queryFilter)
+func (c *UserController) List(
+	ctx *gin.Context,
+	queryFilter *dto.UserListQueryFilter,
+	pageFilter *common.PageQueryFilter,
+	sortFilter *common.SortQueryFilter,
+) (*common.PageDataResponse, error) {
+	items, total, err := c.userSvc.PageByQueryFilter(ctx, queryFilter, pageFilter, sortFilter)
 	if err != nil {
 		return nil, err
 	}
